@@ -11,20 +11,23 @@ const totalConsumptionElement = form.querySelector('#price');
 const quantityElement = form.querySelector('#quantity');
 const label = form.querySelectorAll('label');
 
+
  // получение новых массивов с вводными данными
-function getDate(){
-    
+function getDateNw(){    
     let arrInputs = [];     
     let arrInputsImg = [];
-  
+
     const arrNew = [arrInputs, arrInputsImg];
-      
+    
     for (let i = 0; i < inputs.length; i++) {
+       
         if ((inputs[i].value !== undefined || inputs[i].value !== null) && inputs[i].value === "" ){
             inputs[i].value = inputs[i].getAttribute("placeholder");                 
           }
         // проверка на минимум  
-        if(+inputs[i].min && +inputs[i].value < +inputs[i].min){
+  
+        if(inputs[i].name!="container-consumption" && (+inputs[i].min && +inputs[i].value < +inputs[i].min)){
+            
             const labelText = label[i].innerText.slice(0, -1);            
             alert(labelText + "- значение  меньше минимального (min = " + inputs[i].min + ")");     
             areaElement.innerText =  '';          
@@ -33,84 +36,88 @@ function getDate(){
         }  
         // пропускать значение NaN  
         if(!isNaN(inputs[i].value)){
+        inputs[i].setAttribute("step", 0.01);   
         arrInputs.push(+inputs[i].value);   
         } else{
             arrInputsImg.push(inputs[i].value);   
         }        
      }; 
-    
      console.log(arrInputs);
     return(arrNew);
-    
-   
 }
 
-
-// расчет цены
-function calculate(){    
+// калькулятор
+function calculateNw(){    
     // присвоение данных параметрам
-    const value = getDate();
+    const value = getDateNw();
     
     let A = value[0][0];
     let B = value[0][1];
     let C = value[0][2];
     let D = value[0][3];
     let E = value[0][4];
+    let area; 
+    // валидация данных   
+    if (D>A || D>B){     
+        alert("D не корректно");
+        areaElement.innerText =  '';          
+        totalConsumptionElement.innerText =  '';   
+        return; 
+    } else {   
+        calcConsumption();
+    }    
 
-    let consumption= value[0][10];   
-
-    
-    // расчет
-    function calc(){
-         // расчет плитного фундамента по умолчанию
-         let area = (A + B) * C * 2 + A*B;  
-         let totalConsumption= area * consumption; 
-  
-        // расчет ленточного фундамента 
+    // расчет площади по типу фундамента
+    function getCalcTypeFund(){  
         for(const radio of typeFundamenta){ 
-            if (radio.checked && radio.value === "3"){
+                // расчет плитного фундамента по умолчанию 
+            if(radio.checked && radio.value === "2") {
+                    area = (A + B) * C * 2 + A*B;  
+            } // расчет ленточного фундамента 
+            else if (radio.checked && radio.value === "3"){
+                let pVneshBP = (A + B) * 2 * C;
+                let pVnutBP = (A-D*2 + B-D*2) * 2 * C;    
+                let pTop = (A-D*2 + B) * 2 * D;
+                let per1 = ((A-D*2)*C)*2+(A-D*2)*D ;
+                let per2 = E*C*2+E*D;    
+                let decrease =  D*C*2;  
                 for(const radio of typeFundamentaLent){ 
-                    let pVneshBP = (A + B) * 2 *  C;
-                    let pVnutBP = (A-D*2 + B-D*2) * 2 * C;    
-                    let pBottom = (A-D*2 + B) * 2 * D;
-                    let per1 = ((A-D*2)*C)*2+(A-D*2)*D ;
-                    let per2 = E*C*2+E*D;    
-                    let decrease =  D*C*2;  
-
                     if(radio.checked) {                                             
                         switch (radio.value) {
                             case value[1][0]:  
-                                area = pVneshBP+pVnutBP+pBottom;    
-                                totalConsumption  = area * consumption;                                 
+                                area = pVneshBP+pVnutBP+pTop;    
                                 break;
                             case value[1][1]:
-                                area = pVneshBP+pVnutBP+pBottom +per1-decrease;
-                               totalConsumption  = area * consumption; 
-                                
+                                area = pVneshBP+pVnutBP+pTop +per1-decrease;
                                 break;
                             case value[1][2]:
                                 decrease =  D*C*4;
-                                area = pVneshBP+pVnutBP+pBottom +per1+per2-decrease;
-                               totalConsumption  = area * consumption; 
-                             
+                                area = pVneshBP+pVnutBP+pTop +per1+per2-decrease;
                                 break;
                             case value[1][3]:
                                 decrease =  D*C*6;
                                 per2 = (E*C*2+E*D)*2;
-                                area = pVneshBP+pVnutBP+pBottom +per1+per2-decrease;
-                               totalConsumption  = area * consumption;                               
+                                area = pVneshBP+pVnutBP+pTop +per1+per2-decrease;
                             break;
-                        }         
+                        }    
                     } 
             }  
-
-            //  по свайному фундаменту в разработке
-            } else if (radio.checked && radio.value === "4") {
-                areaElement.innerText =  '';          
-                totalConsumptionElement.innerText =  '';   
-                alert ('калькулятор по свайному фундаменту в разработке')
-            } 
+                //  по свайному фундаменту в разработке
+                } else if (radio.checked && radio.value === "4") {
+                    let number = value[0][5];
+                    area = ((A + B) * C * 2) * number; 
+              
+                } 
         }  
+        return(area);   
+    }   
+
+    // расчет расхода гидроизоляции
+    function calcConsumption(){           
+        area = getCalcTypeFund();
+        const coefficient = 1.1;
+        let consumption= value[0][11]*coefficient; 
+        let totalConsumption= area * consumption; 
 
         // передача расчета в текст      
         const formatterInt = new Intl.NumberFormat('ru-RU');   
@@ -119,53 +126,43 @@ function calculate(){
         // const formatter = new Intl.NumberFormat('ru-RU');     
         for(const radio of materialType){
             let name = 'Количество банок ';
-            let quantity= value[0][11]; 
-            let widthRul = value[0][12];
-            let lengthRul = value[0][13];
+            let quantity= value[0][12]; 
+            let widthRul = value[0][13];
+            let lengthRul = value[0][14];
             if (radio.checked && radio.value === "8"){
                 totalConsumptionElement.innerText =  formatterInt.format(totalConsumption) + ' кг';   
                 if(quantity){
                     let quantityKg = totalConsumption/quantity;
                     quantityElement.innerText = name + formatterInt.format(quantityKg) + ' шт';   
                    
-                };
+                } else{
+                    quantityElement.innerText =  ' ';   
+                }
             } else if (radio.checked && radio.value === "9"){
-                name = ' рул. / расчет c учетом нахлёста на 15 см';    
-                Srul =  widthRul*lengthRul*0.97;           
+                name = ' рул. ';    
+                Srul =  widthRul*lengthRul;           
                 let quantityRul = area/Srul;
                 totalConsumptionElement.innerText = formatterInt.format(quantityRul) + name;
-               
-                 
             }
-
         }
+    } 
+
+    
         
-       
-    }   
-    // валидация данных
-   
-    if (D<A || D<B){     
-        calc();   
-    } else {   
-        alert("D не корректно");
-        areaElement.innerText =  '';          
-        totalConsumptionElement.innerText =  '';   
-        return;
-    }    
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     // запуск функции сразу при загрузке страницы
-    // calculate();
+    // calculateNw();
     // запуск функции сразу при изменение значений input
     for(const input of inputs) {      
         input.addEventListener('input', () =>{         
-            calculate();           
+            calculateNw();           
        })   
     }
     // запуск функции сразу при клике по кнопке
-    totalPriceBtn.addEventListener('click', function (e) {calculate()});   
+    totalPriceBtn.addEventListener('click', function (e) {calculateNw()});   
 });
 
 
