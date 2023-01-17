@@ -1,0 +1,171 @@
+/* не для avada */
+body{
+   width: 100vw;
+   
+}
+.container{  
+  width: 80%;
+  margin: 5px 20px;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: start;   
+    flex-wrap: nowrap;
+}
+
+
+/* стили кнопок */
+
+/* убираем браузерные обводки */
+a:active, a:focus, button:active, button:focus { outline: none;}
+button::-moz-focus-inner {  border: 0;}
+button {  padding: 0;border: none;font: inherit;color: inherit;cursor: pointer;}
+
+/* задаем в глобальных настройках */
+.button{ 
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 10px 24px;
+  margin: 20px;   /* не для avada */  
+}
+
+/* можно сделать шаблон, отдельные классы или проигнорировать*/
+/* .button-icon{  
+  padding: 10px 24px 10px 16px; 
+} */
+.button-shadom {  
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+}
+.button-text__color .fusion-button-text{
+  color: #006A65; 
+}
+.disabled .fusion-button-text {
+  color: rgba(0, 0, 0, 0.25);  
+}
+svg{
+  fill: #fff;
+  margin-right: 8px;
+}
+.button-text__color svg{
+  fill: #006A65; 
+  margin-right: 8px;
+}
+.disabled svg {
+  fill:  rgba(0, 0, 0, 0.25);  
+} 
+
+/* кнопки по умолчанию */
+.button-default{   
+  background-color: #006A65;
+  color: white; 
+}
+.button-default:hover {  
+  filter: opacity(92%);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.button-default:focus, .button-default:active {  
+    filter: opacity(88%);    
+}
+/* кнопки с  контуром */
+ .button-border{  
+  border: 1px solid #6F7978;
+  background-color: transparent;
+}
+.button-border:hover, .button-border:active {  
+  background: rgba(103, 80, 164, 0.08);
+  border: 1px solid #6F7978;  
+}
+.button-border:focus {  
+  background: rgba(103, 80, 164, 0.08);
+  border: 1px solid #006A65;  
+}
+ /* текстовые кнопки */
+ .button-text{   
+  background-color: transparent;   
+}
+.button-text:hover {  
+  background: rgba(103, 80, 164, 0.08);
+}
+.button-text:focus, .button-text:active {  
+  background: rgba(103, 80, 164, 0.12); 
+}
+/* плавающая кнопка */
+.button-fab{
+  background: linear-gradient(0deg, rgba(0, 106, 101, 0.05), rgba(0, 106, 101, 0.05)), #FAFDFB;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.button-fab:focus, .button-fab:active, .button-fab:hover {
+  background: linear-gradient(0deg, rgba(0, 106, 101, 0.08), rgba(0, 106, 101, 0.08)), #FAFDFB;
+}
+.button-fab:hover {  
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+/* полутоновая кнопка */
+.button-tonal{
+  background: #CCE8E5; 
+}
+.button-tonal:focus, .button-tonal:active, .button-tonal:hover {
+  background: #badad6;  
+}
+.button-tonal:hover {    
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+/* стили для disabled */
+.disabled{
+  pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+  cursor: default; /*  курсор в виде стрелки */   
+}
+.disabled-bgr, .disabled-bgr:focus {
+  background: rgba(28, 27, 31, 0.12)!important;
+  border: none !important;
+
+}
+.disabled-border, .disabled-border:focus{  
+  border: 1px solid rgba(28, 27, 31, 0.12);  
+  color:rgba(0, 0, 0, 0.25);  
+}     
+
+
+.disabled-border, .disabled-border:focus .button-text.disabled:focus { 
+  background-color: transparent !important;
+}
+
+.fusion-layout-column{
+  margin-bottom: 20px;
+}
+.fusion-layout-column input{
+  border: 1px red solid;
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px 20px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+fieldset{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  border: 1px red solid;
+  border-radius: 3px;
+  padding: 20px 20px;
+  margin-top: 10px;
+  
+}
+.fusion-form-radio{
+  margin-right: 10px;
+}
+img{
+  max-width: 300px;
+  max-height: 250px;
+}
+
+
+ 
+
