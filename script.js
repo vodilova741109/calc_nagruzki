@@ -56,6 +56,9 @@ function calculateNw(){
     let C = value[0][2];
     let D = value[0][3];
     let E = value[0][4];
+    let pVneshBP;
+    let pVnutBP;    
+    let pTop;
     let area; 
     // валидация данных   
     if (D>A || D>B){     
@@ -72,13 +75,15 @@ function calculateNw(){
         for(const radio of typeFundamenta){ 
                 // расчет плитного фундамента по умолчанию 
             if(radio.checked && radio.value === "2") {
-                    area = (A + B) * C * 2 + A*B;  
+                pTop = A*B;
+                pVneshBP = (A + B) * C * 2
+                area = pVneshBP + pTop;  
             } // расчет ленточного фундамента 
             else if (radio.checked && radio.value === "3"){
-                let pVneshBP = (A + B) * 2 * C;
-                let pVnutBP = (A-D*2 + B-D*2) * 2 * C;    
-                let pTop = (A-D*2 + B) * 2 * D;
-                let per1 = ((A-D*2)*C)*2+(A-D*2)*D ;
+                pVneshBP = (A + B) * 2 * C;
+                pVnutBP = (A-D*2 + B-D*2) * 2 * C;    
+                pTop = (A-D*2 + B) * 2 * D;
+                let per1 = ((A-D*2)*C)*2+(A-D*2)*D ;пше
                 let per2 = E*C*2+E*D;    
                 let decrease =  D*C*2;  
                 for(const radio of typeFundamentaLent){ 
