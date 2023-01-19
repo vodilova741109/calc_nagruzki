@@ -180,7 +180,7 @@ function calculateNw(){
     function calcConsumption(){           
         area = getCalcTypeFund();
         const coefficient = 1.1;
-        let consumption= value[0][11]*coefficient; 
+        let consumption= value[0][14]*coefficient; 
         let totalConsumption= area * consumption; 
 
         // передача расчета в текст      
@@ -190,9 +190,9 @@ function calculateNw(){
         // const formatter = new Intl.NumberFormat('ru-RU');     
         for(const radio of materialType){
             let name = 'Количество банок ';
-            let quantity= value[0][12]; 
-            let widthRul = value[0][13];
-            let lengthRul = value[0][14];
+            let quantity= value[0][15]; 
+            let widthRul = value[0][16];
+            let lengthRul = value[0][17];
             if (radio.checked && radio.value === "8"){
                 totalConsumptionElement.innerText =  formatterInt.format(totalConsumption) + ' кг';   
                 if(quantity){
