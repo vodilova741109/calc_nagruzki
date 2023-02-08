@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <!-- <script type="module" src="src/index.js" defer></script> -->
+  <!-- <script type="module" src="newJs.js" defer></script> -->
+  <script src="dist/main.js" defer></script>
 
 
   <title>Калькулятор JS
@@ -17,13 +19,9 @@
 </head>
 
 <body>
-
-
-
   <h1>
     Калькулятор на IS
   </h1>
-
   <section class="container flex">
     <form action="https://dev.nitroweb.ru/index.php/kalkulyator/" method="post" class="fusion-form fusion-form-1666">
       <div
@@ -71,16 +69,16 @@
                 </div>
                 <fieldset>
                   <div class="fusion-form-radio"><input data-empty-notice="Вы не ввели данные" tabindex=""
-                      id="radio-fundament-type-1-0" type="radio" value="2" name="fundament-type"
+                      id="radio-fundament-type-1-0" type="radio" value="0" name="fundament-type"
                       class="fusion-form-input" required="true" aria-required="true" checked=""
                       data-holds-private-data="false" step="0.01"><label for="radio-fundament-type-1-0">Плиточный
                       фундамент</label></div>
                   <div class="fusion-form-radio"><input data-empty-notice="Вы не ввели данные" tabindex=""
-                      id="radio-fundament-type-1-1" type="radio" value="3" name="fundament-type"
+                      id="radio-fundament-type-1-1" type="radio" value="1" name="fundament-type"
                       class="fusion-form-input" required="true" aria-required="true" data-holds-private-data="false"
                       step="0.01"><label for="radio-fundament-type-1-1">Ленточный фундамент</label></div>
                   <div class="fusion-form-radio"><input data-empty-notice="Вы не ввели данные" tabindex=""
-                      id="radio-fundament-type-1-2" type="radio" value="4" name="fundament-type"
+                      id="radio-fundament-type-1-2" type="radio" value="2" name="fundament-type"
                       class="fusion-form-input" required="true" aria-required="true" data-holds-private-data="false"
                       step="0.01"><label for="radio-fundament-type-1-2">Свайный фундамент</label></div>
                 </fieldset>
@@ -145,7 +143,7 @@
                 </div>
                 <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-arrows-alt-v fas"></i><input
                     type="number" data-invalid-notice="Введите любое положительное число больше нуля"
-                    name="height2-gidr" id="height2-gidr" value="" class="fusion-form-input" placeholder="1"
+                    name="height2-gidr" id="height2-gidr" value="" class="fusion-form-input" placeholder="10"
                     data-holds-private-data="false" min="1" max="500" step="0.01"></div>
               </div>
             </div>
@@ -512,7 +510,7 @@
                 <div class="fusion-form-input-with-icon"><i class=" fa-calculator fas"></i>
                   <div class="fusion-select-wrapper"><select tabindex="" id="sum" name="sum" class="fusion-form-input"
                       data-holds-private-data="false">
-                      <option value="20">Общая площадь</option>
+                      <option value="20">Выберите тип</option>
                       <option value="21">Внешняя поверхность</option>
                       <option value="22">Внутренняя поверхность</option>
                       <option value="23">Верхняя поверхность</option>
@@ -543,12 +541,16 @@
               <div class="fusion-text fusion-text-2 fusion-text-no-margin"
                 style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
                 id="area"></div>
+              <div class="fusion-text fusion-text-2 fusion-text-no-margin"
+                style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
+                id="area1"></div>
               <div class="fusion-text fusion-text-3 fusion-text-no-margin"
                 style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
                 id="price"></div>
               <div class="fusion-text fusion-text-4 fusion-text-no-margin"
                 style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
                 id="quantity"></div>
+
             </div>
           </div>
         </div>
@@ -556,6 +558,362 @@
         name="fusion_privacy_expiration_interval" value="48"><input type="hidden" name="privacy_expiration_action"
         value="anonymize"><input type="hidden" id="fusion-form-nonce-1666" name="fusion-form-nonce-1666"
         value="6db60fba11">
+    </form>
+
+  </section>
+  <section class="container flex">
+    <div class="fusion-panel panel-default panel-a97db8d3430ae1ded fusion-toggle-has-divider"
+      style="--awb-title-color:var(--awb-color8);">
+      <div class="panel-heading">
+        <h4 class="panel-title toggle" id="toggle_a97db8d3430ae1ded"><a aria-expanded="true"
+            aria-controls="a97db8d3430ae1ded" role="button" data-toggle="collapse" data-parent="#accordion-1665-1"
+            data-target="#a97db8d3430ae1ded" href="#a97db8d3430ae1ded" aria-selected="true" class="active"><span
+              class="fusion-toggle-icon-wrapper" aria-hidden="true"><i class="fa-fusion-box active-icon awb-icon-minus"
+                aria-hidden="true"></i><i class="fa-fusion-box inactive-icon awb-icon-plus"
+                aria-hidden="true"></i></span><span class="fusion-toggle-heading">Рассчитать опалубку </span></a></h4>
+      </div>
+      <div id="a97db8d3430ae1ded" class="panel-collapse collapse in" araia-labelledby="toggle_a97db8d3430ae1ded"
+        style="height: auto;">
+        <div class="panel-body toggle-content fusion-clearfix">
+          <div class="fusion-form fusion-form-builder fusion-form-form-wrapper fusion-form-1763"
+            style="--awb-tooltip-text-color:#ffffff;--awb-tooltip-background-color:#333333;" data-form-id="1763"
+            data-config="{&quot;form_id&quot;:&quot;1763&quot;,&quot;form_post_id&quot;:&quot;1763&quot;,&quot;post_id&quot;:1665,&quot;form_type&quot;:&quot;ajax&quot;,&quot;confirmation_type&quot;:&quot;message&quot;,&quot;redirect_url&quot;:&quot;&quot;,&quot;field_labels&quot;:{&quot;width-dosc&quot;:&quot;\u0428\u0438\u0440\u0438\u043d\u0430 \u0434\u043e\u0441\u043a\u0438, \u043c *&quot;,&quot;length-dosc&quot;:&quot;\u0414\u043b\u0438\u043d\u0430 \u0434\u043e\u0441\u043a\u0438, \u043c&quot;,&quot;height-sv&quot;:&quot;\u0422\u043e\u043b\u0449\u0438\u043d\u0430 \u0434\u043e\u0441\u043a\u0438, \u043c&quot;},&quot;field_logics&quot;:{&quot;width-dosc&quot;:&quot;[]&quot;,&quot;length-dosc&quot;:&quot;[]&quot;,&quot;height-sv&quot;:&quot;[]&quot;},&quot;field_types&quot;:{&quot;width-dosc&quot;:&quot;number&quot;,&quot;length-dosc&quot;:&quot;number&quot;,&quot;height-sv&quot;:&quot;number&quot;},&quot;nonce_method&quot;:&quot;ajax&quot;}">
+            <form action="https://dev.nitroweb.ru/index.php/kalkulyator/" method="post"
+              class="fusion-form fusion-form-1763">
+              <div
+                class="fusion-fullwidth fullwidth-box fusion-builder-row-1-2 form-opalubka fusion-flex-container has-pattern-background has-mask-background frm-opal nonhundred-percent-fullwidth non-hundred-percent-height-scrolling"
+                style="--awb-border-color:var(--awb-color1);--awb-border-radius-top-left:8px;--awb-border-radius-top-right:8px;--awb-border-radius-bottom-right:8px;--awb-border-radius-bottom-left:8px;--awb-overflow:hidden;--awb-padding-top:20px;--awb-padding-right:30px;--awb-padding-bottom:20px;--awb-padding-left:30px;--awb-margin-top:30px;--awb-margin-bottom:40px;--awb-background-color:var(--awb-custom_color_4);--awb-box-shadow:5px 5px 21px 2px var(--awb-custom_color_3);">
+                <div
+                  class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-justify-content-space-evenly"
+                  style="width:calc( 100% + 20px ) !important;max-width:calc( 100% + 20px ) !important;margin-left: calc(-20px / 2 );margin-right: calc(-20px / 2 );">
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-15 fusion_builder_column_1_1 1_1 fusion-flex-column fusion-flex-align-self-center"
+                    style="--awb-bg-size:cover;--awb-width-large:100%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-center fusion-content-layout-column fusion-content-nowrap">
+                      <div
+                        class="fusion-title title fusion-title-2 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-three"
+                        style="--awb-text-color:var(--awb-color8);--awb-sep-color:var(--awb-custom_color_2);--awb-font-size:var(--awb-typography2-font-size);">
+                        <h3 class="title-heading-center"
+                          style="font-family:var(--awb-typography2-font-family);font-weight:var(--awb-typography2-font-weight);font-style:var(--awb-typography2-font-style);margin:0;font-size:1em;letter-spacing:var(--awb-typography2-letter-spacing);text-transform:var(--awb-typography2-text-transform);line-height:var(--awb-typography2-line-height);">
+                          <p data-pm-slice="1 1 []">Рассчитать опалубку</p>
+                        </h3>
+                      </div>
+                      <div
+                        class="fusion-separator fusion-no-small-visibility fusion-no-medium-visibility fusion-has-icon"
+                        style="align-self: center;margin-left: auto;margin-right: auto;width:100%;max-width:90%;">
+                        <div class="fusion-separator-border sep-single sep-solid"
+                          style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                        </div><span class="icon-wrapper"
+                          style="border-color:transparent;font-size:16px;width: 1.75em; height: 1.75em;border-width:2px;padding:2px;margin-top:-1px"><i
+                            class="fa-calculator fas" style="font-size: inherit;color:var(--awb-color8);"
+                            aria-hidden="true"></i></span>
+                        <div class="fusion-separator-border sep-single sep-solid"
+                          style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-16 fusion-flex-column fusion-flex-align-self-flex-start"
+                    style="--awb-bg-size:cover;--awb-width-large:50%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+                      <div class="fusion-form-field fusion-form-number-field fusion-form-label-above" style=""
+                        data-form-id="1763">
+                        <div class="fusion-form-label-wrapper"><label for="width-dosc">Ширина доски, м *</label>
+                          <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                              class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 0,1 м</span>
+                          </div>
+                        </div>
+                        <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                            type="number" data-invalid-notice="Введите любое положительное число больше нуля"
+                            name="width-dosc" id="width-dosc" value="" class="fusion-form-input" placeholder="0.15"
+                            data-holds-private-data="false" min="0.1" max="10"></div>
+                      </div>
+                      <div class="fusion-form-field fusion-form-number-field fusion-form-label-above" style=""
+                        data-form-id="1763">
+                        <div class="fusion-form-label-wrapper"><label for="length-dosc">Длина доски, м</label>
+                          <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                              class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 1 м</span>
+                          </div>
+                        </div>
+                        <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-arrows-alt-h fas"></i><input
+                            type="number" data-invalid-notice="Введите любое положительное число больше нуля"
+                            name="length-dosc" id="length-dosc" value="" class="fusion-form-input" placeholder="6"
+                            data-holds-private-data="false" min="1" max="10"></div>
+                      </div>
+                      <div class="fusion-form-field fusion-form-number-field fusion-form-label-above" style=""
+                        data-form-id="1763">
+                        <div class="fusion-form-label-wrapper"><label for="height-sv">Толщина доски, м</label>
+                          <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                              class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 0.01 м</span>
+                          </div>
+                        </div>
+                        <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-arrows-alt-v fas"></i><input
+                            type="number" data-invalid-notice="Введите любое положительное число больше нуля"
+                            name="height-sv" id="height-sv" value="" class="fusion-form-input" placeholder="1"
+                            data-holds-private-data="false" min="0.01" max="10"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-17 fusion_builder_column_1_1 1_1 fusion-flex-column"
+                    style="--awb-bg-size:cover;--awb-width-large:100%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+                      <div
+                        class="fusion-separator fusion-no-small-visibility fusion-no-medium-visibility fusion-has-icon"
+                        style="align-self: center;margin-left: auto;margin-right: auto;width:100%;max-width:90%;">
+                        <div class="fusion-separator-border sep-single sep-solid"
+                          style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                        </div><span class="icon-wrapper"
+                          style="border-color:transparent;font-size:16px;width: 1.75em; height: 1.75em;border-width:2px;padding:2px;margin-top:-1px"><i
+                            class="fa-calculator fas" style="font-size: inherit;color:var(--awb-color8);"
+                            aria-hidden="true"></i></span>
+                        <div class="fusion-separator-border sep-single sep-solid"
+                          style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-18 fusion_builder_column_1_2 1_2 fusion-flex-column"
+                    style="--awb-bg-size:cover;--awb-width-large:50%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:50%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+                      <div><a
+                          class="fusion-button button  button-flat fusion-button-default-size button-default fusion-button-default button-2 fusion-button-default-span fusion-button-default-type button-opal"
+                          target="_self"><span class="fusion-button-text">Рассчитать</span></a></div>
+                    </div>
+                  </div>
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-19 fusion-flex-column fusion-flex-align-self-flex-start"
+                    style="--awb-bg-size:cover;--awb-width-large:10%;--awb-margin-top-large:0px;--awb-spacing-right-large:0;--awb-margin-bottom-large:0px;--awb-spacing-left-large:0;--awb-width-medium:10%;--awb-order-medium:0;--awb-spacing-right-medium:0;--awb-spacing-left-medium:0;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column fusion-content-nowrap">
+                      <div class="fusion-text fusion-text-7 sm-text-align-left fusion-text-no-margin"
+                        style="--awb-content-alignment:center;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);">
+                        <p>Итого:</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="fusion-layout-column fusion_builder_column fusion-builder-column-20 fusion-flex-column fusion-flex-align-self-flex-start"
+                    style="--awb-bg-size:cover;--awb-width-large:40%;--awb-margin-top-large:0px;--awb-spacing-right-large:0;--awb-margin-bottom-large:0px;--awb-spacing-left-large:0;--awb-width-medium:40%;--awb-order-medium:0;--awb-spacing-right-medium:0;--awb-spacing-left-medium:0;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+                    <div
+                      class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column fusion-content-nowrap">
+                      <div class="fusion-text fusion-text-8 fusion-text-no-margin"
+                        style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
+                        id="num-dosc"></div>
+                      <div class="fusion-text fusion-text-9 fusion-text-no-margin"
+                        style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);">
+                      </div>
+                      <div class="fusion-text fusion-text-10 fusion-text-no-margin"
+                        style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><input type="hidden" name="fusion_privacy_store_ip_ua" value="false"><input type="hidden"
+                name="fusion_privacy_expiration_interval" value="48"><input type="hidden"
+                name="privacy_expiration_action" value="anonymize"><input type="hidden" id="fusion-form-nonce-1763"
+                name="fusion-form-nonce-1763" value="1ac840ca50">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container flex">
+    <form action="https://dev.nitroweb.ru/index.php/kalkulyator-raschet-obema-kotlovana/" method="post"
+      class="fusion-form fusion-form-1809">
+      <div
+        class="fusion-fullwidth fullwidth-box fusion-builder-row-1-2 fusion-flex-container has-pattern-background has-mask-background form-transhei nonhundred-percent-fullwidth non-hundred-percent-height-scrolling"
+        style="--awb-border-color:var(--awb-color1);--awb-border-radius-top-left:8px;--awb-border-radius-top-right:8px;--awb-border-radius-bottom-right:8px;--awb-border-radius-bottom-left:8px;--awb-overflow:hidden;--awb-padding-top:20px;--awb-padding-right:30px;--awb-padding-bottom:20px;--awb-padding-left:30px;--awb-margin-top:30px;--awb-margin-bottom:40px;--awb-background-color:var(--awb-custom_color_4);--awb-box-shadow:5px 5px 21px 2px var(--awb-custom_color_3);">
+        <div
+          class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-justify-content-space-evenly"
+          style="width:calc( 100% + 20px ) !important;max-width:calc( 100% + 20px ) !important;margin-left: calc(-20px / 2 );margin-right: calc(-20px / 2 );">
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-13 fusion_builder_column_1_1 1_1 fusion-flex-column fusion-flex-align-self-center"
+            style="--awb-bg-size:cover;--awb-width-large:100%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-center fusion-content-layout-column fusion-content-nowrap">
+              <div
+                class="fusion-title title fusion-title-3 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-three"
+                style="--awb-text-color:var(--awb-color8);--awb-sep-color:var(--awb-custom_color_2);--awb-font-size:var(--awb-typography2-font-size);">
+                <h3 class="title-heading-center"
+                  style="font-family:var(--awb-typography2-font-family);font-weight:var(--awb-typography2-font-weight);font-style:var(--awb-typography2-font-style);margin:0;font-size:1em;letter-spacing:var(--awb-typography2-letter-spacing);text-transform:var(--awb-typography2-text-transform);line-height:var(--awb-typography2-line-height);">
+                  <p data-pm-slice="1 1 []">Введите параметры для расчета траншеи</p>
+                </h3>
+              </div>
+              <div class="fusion-separator fusion-no-small-visibility fusion-no-medium-visibility fusion-has-icon"
+                style="align-self: center;margin-left: auto;margin-right: auto;width:100%;max-width:90%;">
+                <div class="fusion-separator-border sep-single sep-solid"
+                  style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                </div><span class="icon-wrapper"
+                  style="border-color:transparent;font-size:16px;width: 1.75em; height: 1.75em;border-width:2px;padding:2px;margin-top:-1px"><i
+                    class="fa-calculator fas" style="font-size: inherit;color:var(--awb-color8);"
+                    aria-hidden="true"></i></span>
+                <div class="fusion-separator-border sep-single sep-solid"
+                  style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-14 fusion-flex-column fusion-flex-align-self-flex-start"
+            style="--awb-bg-size:cover;--awb-width-large:50%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+              <div class="fusion-form-field fusion-form-radio-field fusion-form-label-above" style=""
+                data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><span class="label">Выберите тип расчета <abbr
+                      class="fusion-form-element-required" title="required">*</abbr></span></div>
+                <fieldset>
+                  <div class="fusion-form-radio"><input tabindex="" id="radio-calc-type-3-0" type="radio" value="0"
+                      name="calc-type" class="fusion-form-input" required="true" aria-required="true" checked=""
+                      data-holds-private-data="false"><label for="radio-calc-type-3-0">Расчет объема грунта котлована с
+                      вертикальными стенками</label></div>
+                  <div class="fusion-form-radio"><input tabindex="" id="radio-calc-type-3-1" type="radio" value="1"
+                      name="calc-type" class="fusion-form-input" required="true" aria-required="true"
+                      data-holds-private-data="false"><label for="radio-calc-type-3-1">Расчет объема грунта котлована с
+                      вертикальными стенками с перепадом высот (дом на склоне)</label></div>
+                  <div class="fusion-form-radio"><input tabindex="" id="radio-calc-type-3-2" type="radio" value="2"
+                      name="calc-type" class="fusion-form-input" required="true" aria-required="true"
+                      data-holds-private-data="false"><label for="radio-calc-type-3-2">Расчет объема котлована с
+                      откосами</label></div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-15 fusion-flex-column fusion-flex-align-self-flex-start"
+            style="--awb-bg-size:cover;--awb-width-large:50%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+              <div class="fusion-form-field fusion-form-number-field fusion-form-label-above" style=""
+                data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><label for="height-tran">h - высота (расстояние от дна до верхней
+                    кромки), м *</label>
+                  <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                      class="fusion-form-tooltip-content" style="width: 276.788px;">минимальное значение 0,6 м</span>
+                  </div>
+                </div>
+                <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                    type="number" data-invalid-notice="Введите любое положительное число больше нуля" name="height-tran"
+                    id="height-tran" value="" class="fusion-form-input" placeholder="0.6"
+                    data-holds-private-data="false" min="0.1" max="10"></div>
+              </div>
+              <div class="fusion-form-field fusion-form-number-field fusion-form-label-above fusion-form-field-hidden"
+                style="" data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><label for="height1-tran">h1 - высота наибольшей стенки, м
+                    *</label>
+                  <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                      class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 0,6 м</span></div>
+                </div>
+                <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                    type="number" data-invalid-notice="Введите любое положительное число больше нуля"
+                    name="height1-tran" id="height1-tran" value="" class="fusion-form-input" placeholder="0.6"
+                    data-holds-private-data="false" min="0.1" max="10"></div>
+              </div>
+              <div class="fusion-form-field fusion-form-number-field fusion-form-label-above fusion-form-field-hidden"
+                style="" data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><label for="height2-tran">h2 - высота наибольшей стенки, м
+                    *</label>
+                  <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                      class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 0,6 м</span></div>
+                </div>
+                <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                    type="number" data-invalid-notice="Введите любое положительное число больше нуля"
+                    name="height2-tran" id="height2-tran" value="" class="fusion-form-input" placeholder="0.6"
+                    data-holds-private-data="false" min="0.1" max="10"></div>
+              </div>
+              <div class="fusion-form-field fusion-form-number-field fusion-form-label-above fusion-form-field-hidden"
+                style="" data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><label for="S1-tran">S1 - площадь дна, м2 *</label>
+                  <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                      class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 1 м</span></div>
+                </div>
+                <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                    type="number" data-invalid-notice="Введите любое положительное число больше 1" name="S1-tran"
+                    id="S1-tran" value="" class="fusion-form-input" placeholder="1" data-holds-private-data="false"
+                    min="1" max="10"></div>
+              </div>
+              <div class="fusion-form-field fusion-form-number-field fusion-form-label-above fusion-form-field-hidden"
+                style="" data-form-id="1809">
+                <div class="fusion-form-label-wrapper"><label for="S2-tran">S2 - площадь сечения по верху выемки
+                    (нулевому уровню участка), м2 *</label>
+                  <div class="fusion-form-tooltip"><i class="awb-icon-question-circle"></i><span
+                      class="fusion-form-tooltip-content" style="width: 0px;">минимальное значение 1 м</span></div>
+                </div>
+                <div class="fusion-form-input-with-icon"><i class="awb-form-icon fa-expand-alt fas"></i><input
+                    type="number" data-invalid-notice="Введите любое положительное число больше 1" name="S2-tran"
+                    id="S2-tran" value="" class="fusion-form-input" placeholder="1" data-holds-private-data="false"
+                    min="1" max="10"></div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-16 fusion_builder_column_1_1 1_1 fusion-flex-column"
+            style="--awb-bg-size:cover;--awb-width-large:100%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:100%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+              <div class="fusion-separator fusion-no-small-visibility fusion-no-medium-visibility fusion-has-icon"
+                style="align-self: center;margin-left: auto;margin-right: auto;width:100%;max-width:90%;">
+                <div class="fusion-separator-border sep-single sep-solid"
+                  style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                </div><span class="icon-wrapper"
+                  style="border-color:transparent;font-size:16px;width: 1.75em; height: 1.75em;border-width:2px;padding:2px;margin-top:-1px"><i
+                    class="fa-calculator fas" style="font-size: inherit;color:var(--awb-color8);"
+                    aria-hidden="true"></i></span>
+                <div class="fusion-separator-border sep-single sep-solid"
+                  style="--awb-height:20px;--awb-amount:20px;--awb-sep-color:var(--awb-color8);border-color:var(--awb-color8);border-top-width:2px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-17 fusion_builder_column_1_5 1_5 fusion-flex-column"
+            style="--awb-bg-size:cover;--awb-width-large:20%;--awb-margin-top-large:0px;--awb-spacing-right-large:10px;--awb-margin-bottom-large:0px;--awb-spacing-left-large:10px;--awb-width-medium:20%;--awb-order-medium:0;--awb-spacing-right-medium:10px;--awb-spacing-left-medium:10px;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column">
+              <div><a
+                  class="fusion-button button button-flat fusion-button-default-size button-default fusion-button-default button-2 fusion-button-default-span fusion-button-default-type button-transh"
+                  target="_self"><span class="fusion-button-text">Рассчитать</span></a></div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-18 fusion-flex-column fusion-flex-align-self-flex-start"
+            style="--awb-bg-size:cover;--awb-width-large:10%;--awb-margin-top-large:0px;--awb-spacing-right-large:0;--awb-margin-bottom-large:0px;--awb-spacing-left-large:0;--awb-width-medium:10%;--awb-order-medium:0;--awb-spacing-right-medium:0;--awb-spacing-left-medium:0;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column fusion-content-nowrap">
+              <div class="fusion-text fusion-text-5 sm-text-align-left fusion-text-no-margin"
+                style="--awb-content-alignment:center;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);">
+                <p>Итого:</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="fusion-layout-column fusion_builder_column fusion-builder-column-19 fusion-flex-column fusion-flex-align-self-flex-start"
+            style="--awb-bg-size:cover;--awb-width-large:70%;--awb-margin-top-large:0px;--awb-spacing-right-large:0;--awb-margin-bottom-large:0px;--awb-spacing-left-large:0;--awb-width-medium:70%;--awb-order-medium:0;--awb-spacing-right-medium:0;--awb-spacing-left-medium:0;--awb-width-small:100%;--awb-order-small:0;--awb-spacing-right-small:10px;--awb-spacing-left-small:10px;">
+            <div
+              class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column fusion-content-nowrap">
+              <div class="fusion-text fusion-text-6 fusion-text-no-margin"
+                style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
+                id="volume"></div>
+                <div class="fusion-text fusion-text-6 fusion-text-no-margin"
+                style="--awb-content-alignment:left;--awb-font-size:24px;--awb-line-height:var(--awb-typography4-line-height);--awb-letter-spacing:var(--awb-typography4-letter-spacing);--awb-text-transform:var(--awb-typography4-text-transform);--awb-text-font-family:var(--awb-typography2-font-family);--awb-text-font-weight:var(--awb-typography2-font-weight);--awb-text-font-style:var(--awb-typography2-font-style);"
+                id="description"></div>
+            </div>
+            
+          </div>
+        </div>
+      </div><input type="hidden" name="fusion_privacy_store_ip_ua" value="false"><input type="hidden"
+        name="fusion_privacy_expiration_interval" value="48"><input type="hidden" name="privacy_expiration_action"
+        value="anonymize"><input type="hidden" id="fusion-form-nonce-1809" name="fusion-form-nonce-1809"
+        value="3cadef839c">
     </form>
 
 
