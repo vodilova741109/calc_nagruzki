@@ -2,25 +2,42 @@
 function runStart(){
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';   
-        const form = document.querySelector('.frm-inp');   
-        const totalPriceBtn =  form.querySelector('.button');
-        // запуск функции по кнопке расчета параметров фундамента
-        totalPriceBtn.addEventListener('click', function (e) {calculateNw(), getGidroisol(),getAreaType()});   
-        // запуск функции по кнопке расчета опалубки
-        const formOpal = document.querySelector('.form-opalubka');   
-        const totalOpalBtn =  formOpal.querySelector('.button-opal');
-        totalOpalBtn.addEventListener('click', function (e) {getNumOpalubka()});
-        // запуск функции по кнопке расчета траншеи
-        const formTransh = document.querySelector('.form-transhei');   
-        const totalTranshBtn =  formTransh.querySelector('.button-transh');
-        totalTranshBtn.addEventListener('click', function (e) {getCalcTransh()});   
+
+        if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0){
+            // alert("есть все");
+            btnParam();
+            btnOpalub();  
+            btnTransh();
+            btnGidroisol();
+            return;
+        }  else if (document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0) {
+            // alert("есть параметры, и опалубка и траншея");           
+            btnParam();
+            btnOpalub();  
+            btnTransh();         
+        }  else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0) {
+            // alert("есть параметры и гидроизоляция");           
+            btnParam();
+            btnGidroisol();          
+        } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0) {
+            // alert("есть параметры и опалубка");           
+            btnParam();
+            btnOpalub();            
+        }  else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0) {
+            // alert("есть параметры и траншея");           
+            btnParam();            
+            btnTransh();
+        }  else if(document.getElementsByClassName("frm-inp").length !== 0) {
+            // alert("есть только параметры");           
+            btnParam();            
+        } else {
+            // alert("нет калькуляторов");
+            return;
+        }
     });
 };
-import calculateNw from './calculator.js'
-import getNumOpalubka from './opalubca.js'
-import getGidroisol from './gidroisol.js'
-import getAreaType from './getAreaType.js'
-import getCalcTransh from './transh.js'
+
+import { btnParam, btnGidroisol, btnOpalub, btnTransh }  from './addEvent.js'
 
 
 export default runStart;

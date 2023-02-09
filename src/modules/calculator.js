@@ -110,87 +110,13 @@ function calculateNw(){
            } 
        }   
     }  
-    //  расчет материала
-    // function getGidroisol(){
-    //     const coefficient = 1.1;
-    //     let consumption= domEl.arrValue[0][18]*coefficient; 
-    //     let totalConsumption= obS.area * consumption;
-            
-    //     for(let radio of materialType){
-    //         let name = 'Количество банок ';
-    //         let quantity= domEl.arrValue[0][19]; 
-    //         let widthRul = domEl.arrValue[0][20];
-    //         let lengthRul = domEl.arrValue[0][21];
-    //         if (radio.checked && radio.value === "8"){
-    //             totalConsumptionElement.innerText = "Для данной площади необходимо " +  domEl.formatterInt.format(totalConsumption) + ' кг';                        
-    //             if(quantity){
-    //                 let quantityKg = totalConsumption/quantity;
-    //                 quantityElement.innerText = name + domEl.formatterInt.format(quantityKg) + ' шт';   
-                    
-    //             } else{
-    //                 quantityElement.innerText =  ' ';   
-    //             }
-    //         } else if (radio.checked && radio.value === "9"){
-    //             name = ' рул. ';    
-    //             const Srul =  widthRul*lengthRul;           
-    //             let quantityRul = obS.area/Srul;
-    //             totalConsumptionElement.innerText = domEl.formatterInt.format(quantityRul) + name;
-    //             quantityElement.innerText =  ' ';
-    //         }
-    //     } 
-    // }
-
-     // расчет площади составляюищ поверхностей (внеш, внут, верх)
-    //  function getAreaType(){
-    //     domEl.domEl.select.addEventListener('change', (e) =>{                 
-    //         for (let i = 0; i < options.length; i++) {
-    //             // alert(domEl.domEl.select.value);
-    //             switch (e.target.value) {    
-    //                             case '20' :      
-    //                                 getCalcTypeFund();
-    //                                 obS.area;                                                                 
-    //                                 domEl.areaElement1.innerText = '';
-    //                             break;  
-    //                             // первый тип   
-    //                             case '21' :      
-    //                                 obS.area  =  obS.pVneshBP;
-    //                                 domEl.areaElement1.innerText = "Внешняя поверхность " + domEl.formatterInt.format(obS.area) + ' м2';    
-    //                             break;
-    //                             // второй тип    
-    //                             case '22':
-    //                                 if(domEl.typeFundamenta[0].value === "0" && domEl.typeFundamenta[0].checked ){    
-    //                                     // obS.area  =  0;                                           
-    //                                     domEl.areaElement1.innerText = "Нет внутренней поверхности"; 
-    //                                 } else {
-    //                                     obS.area  =  obS.pVnut;      
-    //                                     domEl.areaElement1.innerText = "Внутренняя поверхность " + domEl.formatterInt.format(obS.area) + ' м2';                                     
-    //                                 }    
-    //                                 break;
-    //                             case '23': 
-    //                                 // третий тип    
-    //                                 obS.area  =  obS.pTop;    
-    //                                 domEl.areaElement1.innerText = "Верхняя поверхность " + domEl.formatterInt.format(obS.area) + ' м2';   
-    //                                 break;
-    //                             case '24': 
-    //                             // третий тип       
-    //                             if(domEl.typeFundamenta[2].value === "2" && domEl.typeFundamenta[2].checked){
-    //                                 obS.area  =  areaSv;       
-    //                                 domEl.areaElement1.innerText = "Поверхность свай " + domEl.formatterInt.format(obS.area) + ' м2';                                     
-    //                             } else {
-    //                                 // obS.area  =  0; 
-    //                                 domEl.areaElement1.innerText = "Только для свайного фундамента"; 
-    //                             }   
-    //                             break;
-    //             }   
-    //         }      
-    //         getGidroisol(obS.area);
-    //     }) 
-    // } 
+    
        // запуск  
     function start(){   
         // получение типа фундамента
         getCalcTypeFund();
          domEl.areaElement.innerText = "Общая площадь " + domEl.formatterInt.format(obS.area) + ' м2'; 
+         domEl.volumeFund.innerText = "Объем " + domEl.formatterInt.format(obS.V) + ' м3';
         Cleaningdata ();
     }
     // валидатор
@@ -210,7 +136,7 @@ function calculateNw(){
     Cleaningdata(inputs);
     // добавит новый ключ в объект "areaSv" в объект cо значением areaSv
     obS.areaSv = areaSv; 
-    obS.d = D; 
+    obS.d = D;    
     return (obS);
 }
 

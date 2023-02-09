@@ -11,7 +11,8 @@ function getStandartS(a,b,c,pVnesh){
   const S2 = a*b;      
   const S3 = pVnesh + S2; 
   let perimeter = (a+b)*2;
-  let obj = {pVneshBP: pVnesh, pTop: S2, area: S3, perimeter: perimeter, height: c};  
+  let V = a*b*c;
+  let obj = {pVneshBP: pVnesh, pTop: S2, area: S3, perimeter: perimeter, height: c, V: V};  
   return obj;
 }
 // получение внутренней поверхности основной класс первый тип
@@ -142,7 +143,8 @@ function getArea(array, i, c, d){
     let area = array[i].pVneshBP + array[i].pTop + array[i].pVnut;   
     let perimeter = (area-array[i].pTop)/c; 
     let L =  array[i].pTop/d;
-    const obS = {area: area, pVneshBP: array[i].pVneshBP, pTop: array[i].pTop, pVnut: array[i].pVnut, perimeter: perimeter, height: c, L: L};   
+    let V = array[i].pTop*c;
+    const obS = {area: area, pVneshBP: array[i].pVneshBP, pTop: array[i].pTop, pVnut: array[i].pVnut, perimeter: perimeter, height: c, L: L, V: V};   
     return  obS;
 }
 

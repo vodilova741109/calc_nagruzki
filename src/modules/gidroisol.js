@@ -17,8 +17,7 @@ function getGidroisol(area){
             domEl.totalConsumptionElement.innerText = "Для данной площади необходимо " +  domEl.formatterInt.format(totalConsumption) + ' кг';                        
             if(quantity){
                 let quantityKg = totalConsumption/quantity;
-                domEl.quantityElement.innerText = name + domEl.formatterInt.format(quantityKg) + ' шт';   
-                
+                domEl.quantityElement.innerText = name + domEl.formatterInt.format(quantityKg) + ' шт'; 
             } else{
                 domEl.quantityElement.innerText =  ' ';   
             }

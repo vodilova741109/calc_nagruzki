@@ -4,10 +4,12 @@ function Cleaningdata (inputs = domEl.inputs){
         input.addEventListener('input', () =>{    
             if(input.name != 'calc-type'){
                 domEl.select.value = '20'; 
-                domEl.areaElement.innerText = ''; 
+                domEl.areaElement.innerText = '';
+                domEl.volumeFund.innerText = '';  
                 domEl.areaElement1.innerText = ''; 
                 domEl.totalConsumptionElement.innerText = '';       
                 domEl.quantityElement.innerText = ''; 
+                
             }
             else {
                 domEl.totalTran.innerText = ''; 

@@ -35,7 +35,9 @@ button {  padding: 0;border: none;font: inherit;color: inherit;cursor: pointer;}
   padding: 10px 24px;
   margin: 20px;   /* не для avada */  
 }
-
+.button-gidr{
+  margin-left: 150px;
+}
 /* можно сделать шаблон, отдельные классы или проигнорировать*/
 /* .button-icon{  
   padding: 10px 24px 10px 16px; 
