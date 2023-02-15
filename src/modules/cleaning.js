@@ -9,7 +9,8 @@ function Cleaningdata (inputs = domEl.inputs){
                 domEl.areaElement1.innerText = ''; 
                 domEl.totalConsumptionElement.innerText = '';       
                 domEl.quantityElement.innerText = ''; 
-                
+                domEl.kilogramText.innerText = ''; 
+                domEl.lengthText.innerText = ''; 
             }
             else {
                 domEl.totalTran.innerText = ''; 

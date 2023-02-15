@@ -24,12 +24,20 @@ function btnTransh(){
     const totalTranshBtn =  formTransh.querySelector('.button-transh');
     totalTranshBtn.addEventListener('click', function (e) {getCalcTransh()});
 }
+function btnArmatura (){
+    // запуск функции по кнопкам расчета арматуры
+    const formArm = document.querySelector('.frm-arm');   
+    const totalArmBtn =  formArm.querySelector('.button-arm');
+    totalArmBtn.addEventListener('click', function (e) {getDateArmatura()}); 
+}
+
 
 import calculateNw from './calculator.js'
 import getNumOpalubka from './opalubca.js'
 import getGidroisol from './gidroisol.js'
 import getAreaType from './getAreaType.js'
 import getCalcTransh from './transh.js'
+import getDateArmatura from './armatura.js'
 
 
-export {btnParam, btnGidroisol, btnOpalub, btnTransh};
+export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura};

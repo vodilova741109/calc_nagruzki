@@ -3,15 +3,17 @@ function runStart(){
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';   
 
-        if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0){
+        if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0){
             // alert("есть все");
             btnParam();
             btnOpalub();  
             btnTransh();
             btnGidroisol();
+            btnArmatura();  
+
             return;
-        }  else if (document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0) {
-            // alert("есть параметры, и опалубка и траншея");           
+        }  else if (document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0) {
+            // alert("есть параметры, опалубка, траншея, армирование");           
             btnParam();
             btnOpalub();  
             btnTransh();         
@@ -27,7 +29,12 @@ function runStart(){
             // alert("есть параметры и траншея");           
             btnParam();            
             btnTransh();
-        }  else if(document.getElementsByClassName("frm-inp").length !== 0) {
+        } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0) {
+            // alert("есть параметры и армирование");           
+            btnParam();  
+            btnArmatura(); 
+        } 
+         else if(document.getElementsByClassName("frm-inp").length !== 0) {
             // alert("есть только параметры");           
             btnParam();            
         } else {
@@ -37,7 +44,7 @@ function runStart(){
     });
 };
 
-import { btnParam, btnGidroisol, btnOpalub, btnTransh }  from './addEvent.js'
+import { btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura}  from './addEvent.js'
 
 
 export default runStart;
