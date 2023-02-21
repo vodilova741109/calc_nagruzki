@@ -31,6 +31,14 @@ function btnArmatura (){
     totalArmBtn.addEventListener('click', function (e) {getDateArmatura()}); 
 }
 
+function btnNagruzka(){
+    // запуск функции по кнопкам расчета арматуры
+    const formNagr = document.querySelector('.frm-nagruzka'),
+    btnNagruz = formNagr.querySelector('.button-promerz');  
+    btnNagruz.addEventListener('click', function (e) {btnProm()});  
+}
+
+
 
 import calculateNw from './calculator.js'
 import getNumOpalubka from './opalubca.js'
@@ -38,6 +46,7 @@ import getGidroisol from './gidroisol.js'
 import getAreaType from './getAreaType.js'
 import getCalcTransh from './transh.js'
 import getDateArmatura from './armatura.js'
+import { btnProm} from './promerz_grunta.js'
 
 
-export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura};
+export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnNagruzka};
