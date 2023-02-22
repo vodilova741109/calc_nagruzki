@@ -3,43 +3,60 @@ function runStart(){
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';   
         
-        if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0 && document.getElementsByClassName("frm-nagruzka").length !== 0){
+        if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0 && document.getElementsByClassName("frm-promerz").length !== 0  && document.getElementsByClassName("frm-beton").length !== 0)
+        {
             // alert("есть все");
             btnParam();
             btnOpalub();  
             btnTransh();
             btnGidroisol();
             btnArmatura();
-            btnNagruzka();
+            btnPrmerz();
             getDateGrunt();
+            btnBeton();
             return;
-        }  else if (document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0) {
+        }  else if (document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0 && document.getElementsByClassName("frm-promerz").length !== 0 && document.getElementsByClassName("frm-beton").length !== 0)
+         {
             // alert("есть параметры, опалубка, траншея, армирование");           
             btnParam();
             btnOpalub();  
-            btnTransh();         
+            btnTransh();       
+            btnArmatura();  
+            btnPrmerz();
+            getDateGrunt();
+            btnBeton();
+            return;
         }  else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("button-gidr").length !== 0) {
             // alert("есть параметры и гидроизоляция");           
             btnParam();
-            btnGidroisol();          
+            btnGidroisol();      
+            return;    
         } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-opalubka").length !== 0) {
             // alert("есть параметры и опалубка");           
             btnParam();
-            btnOpalub();            
+            btnOpalub();    
+            return;        
         }  else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("form-transhei").length !== 0) {
             // alert("есть параметры и траншея");           
             btnParam();            
             btnTransh();
+            return;
         } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("frm-arm").length !== 0) {
             // alert("есть параметры и армирование");           
             btnParam();  
             btnArmatura(); 
-        } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("frm-nagruzka").length !== 0) {
-            // alert("есть параметры и нагрузка");           
+            return;
+        } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("frm-promerz").length !== 0) {
+            // alert("есть параметры и промерзание");           
             btnParam();  
             getDateGrunt();
-            btnNagruzka();           
-        } 
+            btnPrmerz();   
+            return;        
+        } else if(document.getElementsByClassName("frm-inp").length !== 0 && document.getElementsByClassName("frm-beton").length !== 0) {
+            // alert("есть параметры и бетон");           
+            btnBeton();
+            return;
+        }         
          else if(document.getElementsByClassName("frm-inp").length !== 0) {
             // alert("есть только параметры");           
             btnParam(); 
@@ -50,7 +67,7 @@ function runStart(){
     });
 };
 
-import { btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnNagruzka}  from './addEvent.js'
+import { btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnPrmerz, btnBeton}  from './addEvent.js'
 
 import {getDateGrunt} from './promerz_grunta.js'
 

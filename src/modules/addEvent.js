@@ -11,7 +11,6 @@ function btnGidroisol(){
     // запуск функции по кнопке расчета гидроизоляции    
     buttonGidr.addEventListener('click', function (e) {getGidroisol(),getAreaType()}); 
 }
-
 function btnOpalub(){
     // запуск функции по кнопке расчета опалубки
     const formOpal = document.querySelector('.form-opalubka');   
@@ -31,11 +30,18 @@ function btnArmatura (){
     totalArmBtn.addEventListener('click', function (e) {getDateArmatura()}); 
 }
 
-function btnNagruzka(){
+function btnPrmerz(){
     // запуск функции по кнопкам расчета арматуры
-    const formNagr = document.querySelector('.frm-nagruzka'),
+    const formNagr = document.querySelector('.frm-promerz'),
     btnNagruz = formNagr.querySelector('.button-promerz');  
     btnNagruz.addEventListener('click', function (e) {btnProm()});  
+}
+
+function btnBeton(){
+    // запуск функции по кнопкам расчета арматуры
+    const formNagr = document.querySelector('.frm-beton'),
+    btnNagruz = formNagr.querySelector('.button-compound');  
+    btnNagruz.addEventListener('click', function (e) {getDateBeton()});  
 }
 
 
@@ -47,6 +53,7 @@ import getAreaType from './getAreaType.js'
 import getCalcTransh from './transh.js'
 import getDateArmatura from './armatura.js'
 import { btnProm} from './promerz_grunta.js'
+import {getDateBeton} from './getBeton.js'
 
 
-export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnNagruzka};
+export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnPrmerz, btnBeton};
