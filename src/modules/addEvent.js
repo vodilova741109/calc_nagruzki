@@ -41,7 +41,7 @@ function btnBeton(){
     // запуск функции по кнопкам расчета арматуры
     const formNagr = document.querySelector('.frm-beton'),
     btnNagruz = formNagr.querySelector('.button-compound');  
-    btnNagruz.addEventListener('click', function (e) {getDateBeton()});  
+    btnNagruz.addEventListener('click', function (e) {calculateBeton()});  
 }
 
 
@@ -53,7 +53,7 @@ import getAreaType from './getAreaType.js'
 import getCalcTransh from './transh.js'
 import getDateArmatura from './armatura.js'
 import { btnProm} from './promerz_grunta.js'
-import {getDateBeton} from './getBeton.js'
+import {calculateBeton} from './getBeton.js'
 
 
 export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnPrmerz, btnBeton};
