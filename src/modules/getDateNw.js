@@ -24,7 +24,8 @@ function getDateNw(inputs, areaElement,totalConsumptionElement, label){
                 inputs[i].setAttribute("step", 0.01);   
                 arrInputs.push(+inputs[i].value);
                 } else{
-                    arrInputsImg.push(inputs[i].value);   
+                    arrInputsImg.push(inputs[i].value);  
+                    // console.log(arrInputsImg);                  
                 } 
             }
         // console.log(arrInputs);

@@ -4,6 +4,7 @@
 // калькулятор
 function calculateNw(){  
     const domEl = getDomElem();    
+    
     // присвоение данных параметрам
     const A = domEl.arrValue[0][3],
           B = domEl.arrValue[0][4],
@@ -14,7 +15,9 @@ function calculateNw(){
           Bsv = domEl.arrValue[0][12],
           r= domEl.arrValue[0][13],
           h = domEl.arrValue[0][14]; 
-    let number = domEl.arrValue[0][15];       
+    let number = domEl.arrValue[0][15];      
+    
+
     let obS = {};
     let areaSv;    
     // данные полученные через функции
@@ -102,6 +105,7 @@ function calculateNw(){
            }
             // расчет ленточного фундамента 
            else if (radio.checked && radio.value === "1"){    
+            // console.log(radio.value);
              areaLentFund();                
            }
            // расчет свайного фундамента 
@@ -115,8 +119,8 @@ function calculateNw(){
     function start(){   
         // получение типа фундамента
         getCalcTypeFund();
-         domEl.areaElement.innerText = "Общая площадь " + domEl.formatterInt.format(obS.area) + ' м2'; 
-         domEl.volumeFund.innerText = "Объем " + domEl.formatterInt.format(obS.V) + ' м3';
+         domEl.areaElement.innerText = "Площадь фундамента " + domEl.formatterInt.format(obS.pTop) + ' м2';                  
+         domEl.volumeFund.innerText = "Объем требуемого бетона " + domEl.formatterInt.format(obS.V) + ' м3';
         Cleaningdata ();
     }
     // валидатор
@@ -136,7 +140,15 @@ function calculateNw(){
     Cleaningdata(inputs);
     // добавит новый ключ в объект "areaSv" в объект cо значением areaSv
     obS.areaSv = areaSv; 
-    obS.d = D;    
+    // obS.d = D;    
+    obS.a = A;   
+    obS.b = B;   
+    obS.c = C;   
+    obS.d = D;   
+    obS.e = E;   
+    obS.per = pVneshBP/C; 
+    domEl.resultHidden.value = obS.pTop;
+    domEl.resultInp.value = obS.pTop;        
     return (obS);
 }
 

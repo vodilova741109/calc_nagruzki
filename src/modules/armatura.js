@@ -3,11 +3,12 @@ function getDateArmatura(){
     const  obS = calculateNw();  
     const  domEl = getDomElem();     
     const form = document.querySelector('.frm-arm'),    
-        select = document.querySelector('#arm'),  
+        select = form.querySelector('#arm'),  
         options = select.querySelectorAll('option');
        
     let diam;
     let coeficM;
+    let objArm ={};
     const density = 7850;
     // выбор коэффициента по типу фундамента
     function getCalcTypeFund(){  
@@ -33,6 +34,7 @@ function getDateArmatura(){
     switch (select.value) {   
                 case '0' : 
                  diam = 0;
+                 alert('Выберите диаметр арматуры');                 
                  // первый тип   
                 case '10' : 
                  diam = 0.010;
@@ -50,14 +52,12 @@ function getDateArmatura(){
     }   
     // console.log(diam);
    // сброс при ничальном положении
-   select.addEventListener('change', (e) =>{       
-        for (let i = 0; i < options.length; i++) {
-            // alert(select.value);            
-                // diamText.innerText = '';
-                domEl.lengthText.innerText = '';   
-                domEl.kilogramText.innerText = '';
-            
-        }    
+   let arrayText= [domEl.lengthText,domEl.kilogramText];
+   select.addEventListener('change', (e) =>{      
+
+        for(let i = 0; i< arrayText.length; i++){
+            arrayText[i].innerText = '';
+        }     
     }) 
     const Kilog = (coeficM*1000)*obS.V,
     Varm = Kilog/density,
@@ -67,13 +67,19 @@ function getDateArmatura(){
         domEl.kilogramText.innerText = 'Вес  ' +  domEl.formatterInt.format(Kilog) + ' кг';    
         domEl.lengthText.innerText = 'Длина  ' + domEl.formatterInt.format(Larm) + ' м';         
     }
+
+
+   
     // console.log(Varm,SseshenArm, diam)
-    Cleaningdata();
+    Cleaningdata(domEl.inputs,arrayText);
+
+   
+    objArm.Kilog = Kilog;
+    objArm.Larm = Larm;
+    return objArm;
+
+  
 }
-
-
-
-
 
 import calculateNw from './calculator.js'
 import getDomElem from './date.js'

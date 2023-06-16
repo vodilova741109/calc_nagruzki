@@ -3,8 +3,8 @@ function btnParam(){
     const form = document.querySelector('.frm-inp');   
     const totalPriceBtn =  form.querySelector('.button');
     // const buttonGidr =  document.querySelector('.button-gidr');
-    // запуск функции по кнопке расчета параметров фундамента
-    totalPriceBtn.addEventListener('click', function (e) {calculateNw(), getAreaType()}); 
+    // запуск функции по кнопке расчета параметров фундамента  
+    totalPriceBtn.addEventListener('click', function (e) {calculateNw()}); 
 }
 function btnGidroisol(){
     const buttonGidr =  document.querySelector('.button-gidr');
@@ -20,8 +20,8 @@ function btnOpalub(){
 function btnTransh(){
     // запуск функции по кнопке расчета траншеи
     const formTransh = document.querySelector('.form-transhei');   
-    const totalTranshBtn =  formTransh.querySelector('.button-transh');
-    totalTranshBtn.addEventListener('click', function (e) {getCalcTransh()});
+    const totalTranshBtn =  formTransh.querySelector('.button-transh');    
+    totalTranshBtn.addEventListener('click', function (e) { activCalcTransh()});
 }
 function btnArmatura (){
     // запуск функции по кнопкам расчета арматуры
@@ -32,28 +32,45 @@ function btnArmatura (){
 
 function btnPrmerz(){
     // запуск функции по кнопкам расчета арматуры
-    const formNagr = document.querySelector('.frm-promerz'),
-    btnNagruz = formNagr.querySelector('.button-promerz');  
+    const formPromerz = document.querySelector('.frm-promerz'),
+    btnNagruz = formPromerz.querySelector('.button-promerz');  
     btnNagruz.addEventListener('click', function (e) {btnProm()});  
 }
 
 function btnBeton(){
     // запуск функции по кнопкам расчета арматуры
-    const formNagr = document.querySelector('.frm-beton'),
-    btnNagruz = formNagr.querySelector('.button-compound');  
+    const formPromerz = document.querySelector('.frm-beton'),
+    btnNagruz = formPromerz.querySelector('.button-compound');  
     btnNagruz.addEventListener('click', function (e) {calculateBeton()});  
 }
 
+
+function btnSave(){
+    // const btnSave = document.querySelectorAll('button[type="submit"]');
+    const printButton = document.getElementById('print-button');
+    const saveButton = document.getElementById('save');
+    saveButton.addEventListener('click', function(){    
+        addObjParam();   
+        getTotalForm();
+    })
+
+    printButton.addEventListener('click', function() {
+        window.print();
+        // console.log(saveButton);
+    })
+}
 
 
 import calculateNw from './calculator.js'
 import getNumOpalubka from './opalubca.js'
 import getGidroisol from './gidroisol.js'
 import getAreaType from './getAreaType.js'
-import getCalcTransh from './transh.js'
+import { activCalcTransh } from './transh.js'
 import getDateArmatura from './armatura.js'
 import { btnProm} from './promerz_grunta.js'
 import {calculateBeton} from './getBeton.js'
+import {addObjParam, getTotalForm} from './getObj.js'
 
 
-export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnPrmerz, btnBeton};
+
+export {btnParam, btnGidroisol, btnOpalub, btnTransh, btnArmatura, btnPrmerz, btnBeton, btnSave};

@@ -1,7 +1,7 @@
 
 // Расчеты различных поверхностей гидроизоляции
 
-// получение внешней поверхности
+// получение площади внешней поверхности
 function getVnesh(a,b,c){
     let result = (a + b) * 2 * c; // не меняется    
     return result;
@@ -141,10 +141,11 @@ function getAreaSv(a,b,h,r){
 // стандартная формула площади и передача всех данных 
 function getArea(array, i, c, d){      
     let area = array[i].pVneshBP + array[i].pTop + array[i].pVnut;   
-    let perimeter = (area-array[i].pTop)/c; 
+    let perimeter = (area-array[i].pTop)/c;    
     let L =  array[i].pTop/d;
     let V = array[i].pTop*c;
     const obS = {area: area, pVneshBP: array[i].pVneshBP, pTop: array[i].pTop, pVnut: array[i].pVnut, perimeter: perimeter, height: c, L: L, V: V};   
+    
     return  obS;
 }
 
