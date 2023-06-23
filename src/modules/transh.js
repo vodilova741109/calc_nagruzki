@@ -63,13 +63,13 @@ function getCalcTranshPl() {
             if (radio.checked && radio.value === "0") {
                 obDate.V = ((obDate.A + obDate.e) * (obDate.B + obDate.e) * obDate.h);
             }
-            // Расчет объема грунта котлована с вертикальными стенками с перепадом высот (дом на склоне)
+            // Расчет объема котлована с откосами
             else if (radio.checked && radio.value === "1") {
                 const S1 = obDate.A * obDate.B,
                 S2 = (obDate.A + obDate.e) * (obDate.B + obDate.e);
                 obDate.V = ((S1 + S2) / 2 * obDate.h);                
-            }
-            // Расчет объема котлована с откосами
+            }          
+            // Расчет объема грунта котлована с вертикальными стенками с перепадом высот (дом на склоне)
             else if (radio.checked && radio.value === "2") {
                   radio.checked = false;
                
@@ -101,8 +101,8 @@ function getCalcTranshLent() {
             else if (radio.checked && radio.value === "1") {
                 // const S1 = + obT.inputs[6].value,
                 // S2 = + obT.inputs[7].value;
-                const S1 = obDate.A * obDate.B,
-                    S2 = (obDate.A + obDate.e) * (obDate.B + obDate.e);
+                const S1 = obDate.l * obDate.d,
+                    S2 = obDate.l * obDate.dNew;                   
                 obDate.V =((S1 + S2) / 2 * obDate.h);
             }
             // Расчет объема грунта котлована с вертикальными стенками с перепадом высот (дом на склоне)
