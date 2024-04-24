@@ -10,7 +10,7 @@ const sumEl = function () {
   let arr = [];
   return function (a) {
     arr = convertArray(a);
-    console.log(arr);
+    // console.log(arr);
     let sum = 0;
     arr.map((item) => (sum += item));
     return sum;
@@ -20,13 +20,13 @@ const postSum = sumEl();
 // передает данные в текст
 const sendTotal = function (array, resultsText) {
   let sum = postSum(array);
-  let arm = addDateArm();
-  let beton = addDateBeton();
- 
+  let sumBetonAndArm = 0;
+  sumBetonAndArm = addSumBetonAndArm();
+  let totalSum = sum + sumBetonAndArm;
   const totalValue = resultsText;
-  totalValue.textContent = sum;
-  console.log(sum);
+  totalValue.textContent = totalSum.toFixed(2);
 };
-import { addDateArm, addDateBeton } from "./sbor_nagruzok.js";
-export { convertArray, sumEl, sendTotal };
+
+import {addSumBetonAndArm} from "./betonAndArm.js";
+export { convertArray, sumEl, sendTotal};
 

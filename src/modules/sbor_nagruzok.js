@@ -292,54 +292,18 @@ function btnNagruz() {
     });
   }
 }
-// событие по кнопке "Итоговый расчет"
-function addResult() {
-   let numbers1 = [];  
-    let numbers2 = [];  
-      const resultsTn = document.querySelectorAll(".result_1"),
-        resultsCoeff = document.querySelectorAll(".result_2");
-        
-     for(let i = 0; i< resultsTn.length; i++) {
-       let resultTn = resultsTn[i].innerText;  
-       let resultCoeff = resultsCoeff[i].innerText;       
-        // пушим все данные в массив 
-            numbers1.push(+resultTn);   
-            numbers2.push(+resultCoeff);               
-     }  
 
-    let sumTn = 0,
-      sumCoef = 0;   
-      // суммируем все данные
-    numbers1.map((item) => (sumTn += item)); 
-    numbers2.map((item) => (sumCoef += item));
-    let newSumTn = sumArm + sumBeton + sumTn;
-    let newSumCoeff = (sumArm + sumBeton + sumCoef);
-     const results_Tn = document.querySelector(".results_1"),
-       results_Coeff = document.querySelector(".results_2");
-       results_Tn.textContent = newSumTn.toFixed(2);
-       results_Coeff.textContent = newSumCoeff.toFixed(2);
-  
-}
-let sumArm = 0;
-let sumBeton = 0;
-function addDateBeton(arr1){  
-  console.log(arr1);
-  sumBeton = arr1.reduce((acc, number) => acc + number, 0)/1000; 
-  return sumBeton;
-}
-function addDateArm (Arm) {  
-  sumArm = Arm/1000;
-  return sumArm;
-}
+
 const btnResult = document.querySelector("#result"); 
 btnResult.addEventListener("click", (e) => {
       const pseudoArray = document.querySelectorAll(".result_1"),
         pseudoArrayCoef = document.querySelectorAll(".result_2");
       const resultsText = document.querySelector(".results_1"),
         resultsTextCoeff = document.querySelector(".results_2");
-        addResult(); 
-      // sendTotal(pseudoArray, resultsText);
-      // sendTotal(pseudoArrayCoef, resultsTextCoeff);
+        // addResult(); 
+   
+      sendTotal(pseudoArray, resultsText);
+      sendTotal(pseudoArrayCoef, resultsTextCoeff);
 })
  
 
@@ -347,14 +311,12 @@ function startNagruzki() {
   getDatePlotnosty();
   btnNagruz();
 }
-//  запуск функции суммирования
-// const postSum = sumEl();
-// sendTotal(elems, elems2);
+
 
 import WeidghtJsonFile from "./data/loadWeight.json" assert { type: "json" };
 
 import { convertArray, sumEl, sendTotal } from "./calcPush.js";
 
-export { startNagruzki, addDateBeton, addDateArm};
+export { startNagruzki};
 
 

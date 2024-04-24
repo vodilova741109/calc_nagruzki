@@ -100,8 +100,7 @@ function calculateBeton() {
             b *= weight;
             c *= weight;
             d *= weight;
-            let words = declOfNum(Math.ceil(d), [' литр', ' литра', ' литров']); 
-            
+            let words = declOfNum(Math.ceil(d), [' литр', ' литра', ' литров']);             
             // console.log(a,b,c,d);
             weightCement.innerText = 'Цемент: ' + a.toFixed(2) + ' кг';
             weightPesok.innerText = 'Песок: ' + b.toFixed(2) + ' кг';
@@ -180,7 +179,7 @@ function addSelectBeton(){
 import calculateNw from './calculator.js'
 import declOfNum from './declOfNum.js'
 import Cleaningdata from './cleaning.js'
-import {addDateBeton} from './sbor_nagruzok.js' 
+import {addDateBeton} from './betonAndArm.js' 
 
 import JsonFile from './data/beton.json' assert { type: "json" };
 import WeightJsonFile from './data/betonWeight.json' assert { type: "json" };

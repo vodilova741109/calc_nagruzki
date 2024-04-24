@@ -82,5 +82,5 @@ function getDateArmatura() {
 import calculateNw from './calculator.js'
 import getDomElem from './date.js'
 import Cleaningdata from './cleaning.js'
-import { addDateArm } from "./sbor_nagruzok.js";
+import { addDateArm } from "./betonAndArm.js";
 export default getDateArmatura;
