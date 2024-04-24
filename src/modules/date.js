@@ -14,9 +14,9 @@ function getDomElem(){
         quantityElement = form.querySelector('#quantity'),
         areaElement1 = form.querySelector('#area1'),
         areaGidro = form.querySelector('#areaGidro'),
-        label = form.querySelectorAll('label'),
-        resultHidden = document.querySelector('.result-1 input'),
-        resultInp = document.querySelector('input[name="result"]'); 
+        label = form.querySelectorAll('label');
+        // resultHidden = document.querySelector('.result-1 input'),
+        // resultInp = document.querySelector('input[name="result"]'); 
        
     // траншея
     const totalTran = document.querySelector('#volume'),
@@ -28,7 +28,7 @@ function getDomElem(){
 
     const formatterInt = new Intl.NumberFormat('ru-RU');
     const arrValue = getDateNw(inputs, areaElement ,totalConsumptionElement, label); 
-    const arrayDomElement = {form: form, inputs: inputs, typeFundamenta: typeFundamenta,typeFundamentaLent: typeFundamentaLent, typeFundamentaSV: typeFundamentaSV, typeSV: typeSV, options: options, select: select, materialType: materialType, areaElement: areaElement, volumeFund:volumeFund,  totalConsumptionElement: totalConsumptionElement,  quantityElement: quantityElement,areaElement1: areaElement1, areaGidro: areaGidro, label: label, formatterInt: formatterInt, arrValue: arrValue, totalTran: totalTran, description: description, kilogramText: kilogramText, lengthText: lengthText, resultInp: resultInp, resultHidden: resultHidden}
+    const arrayDomElement = {form: form, inputs: inputs, typeFundamenta: typeFundamenta,typeFundamentaLent: typeFundamentaLent, typeFundamentaSV: typeFundamentaSV, typeSV: typeSV, options: options, select: select, materialType: materialType, areaElement: areaElement, volumeFund:volumeFund,  totalConsumptionElement: totalConsumptionElement,  quantityElement: quantityElement,areaElement1: areaElement1, areaGidro: areaGidro, label: label, formatterInt: formatterInt, arrValue: arrValue, totalTran: totalTran, description: description, kilogramText: kilogramText, lengthText: lengthText}
     
     return arrayDomElement;
 }

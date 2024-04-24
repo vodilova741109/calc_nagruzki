@@ -196,4 +196,4 @@ import getDateArmatura from './armatura.js'
 import Cleaningresult from './cleaning_result.js'
 
 import { getDomElem, calculateBeton } from './getBeton.js'
-export { addObjParam, getDateProm, getTotalForm };
+// export { addObjParam, getDateProm, getTotalForm };

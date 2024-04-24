@@ -16,8 +16,7 @@ function getDomElem() {
 function getDateGrunt() {
 
     const domEl = getDomElem();
-    let options,
-        arrGrunt = {},
+    let arrGrunt = {},
         obj = {};
     // получаем данные из JSON
     function getDateJson() {
@@ -47,8 +46,6 @@ function getDateGrunt() {
             optionElement.innerHTML = region;
             domEl.selectRegion.append(optionElement);
         }
-       
-
     }
   
 
@@ -167,6 +164,6 @@ function btnProm(text) {
     domEl.selectGrunt.selectedIndex = 0;
 }
 import exampleJsonFile from './data/glubPron.json' assert { type: "json" };
-import { getDateProm } from './getObj.js'
+
 
 export { getDateGrunt, btnProm, addSelectReion, getDomElem, getTypeGrunt };

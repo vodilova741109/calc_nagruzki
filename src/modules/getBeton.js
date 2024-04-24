@@ -107,6 +107,8 @@ function calculateBeton() {
             weightPesok.innerText = 'Песок: ' + b.toFixed(2) + ' кг';
             weightCheb.innerText = 'Щебень: ' + c.toFixed(2) + ' кг';
             weightWater.innerText = 'Вода: ' + d.toFixed(2) + words;
+            let arrBet = [a,b,c,d];
+            addDateBeton(arrBet);           
         }
         vBet();
         let obWeightCement = {
@@ -178,6 +180,7 @@ function addSelectBeton(){
 import calculateNw from './calculator.js'
 import declOfNum from './declOfNum.js'
 import Cleaningdata from './cleaning.js'
+import {addDateBeton} from './sbor_nagruzok.js' 
 
 import JsonFile from './data/beton.json' assert { type: "json" };
 import WeightJsonFile from './data/betonWeight.json' assert { type: "json" };

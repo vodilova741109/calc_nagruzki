@@ -1,0 +1,15 @@
+.clone_block .fusion-builder-row {
+    width: 100% !important;
+}
+
+form .clone_block {
+    display: block !important;
+}
+
+img {
+    width: 100px;
+}
+
+.fusion-form-form-wrapper .fusion-form-field-hidden {
+    display: block;
+}

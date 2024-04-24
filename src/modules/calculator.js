@@ -147,12 +147,12 @@ function calculateNw(){
     obS.d = D;   
     obS.e = E;   
     obS.per = pVneshBP/C; 
-    domEl.resultHidden.value = obS.pTop;
-    domEl.resultInp.value = obS.pTop;        
+    // domEl.resultHidden.value = obS.pTop;
+    // domEl.resultInp.value = obS.pTop;        
     return (obS);
 }
 
-import {getStandartS, getVnesh, getTypeDate, ResultPov, ResultPovSecond, ResultPovthree, ResultPovfour, getAreaSv, getArea} from './getStandartS.js';
+import {getStandartS, getVnesh, getTypeDate, getAreaSv, getArea} from './getStandartS.js';
 
 import getDomElem from './date.js'
 import Cleaningdata from './cleaning.js'
