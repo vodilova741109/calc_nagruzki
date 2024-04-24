@@ -27,23 +27,37 @@ function addBlock() {
     parent = domEl.formNagruzka.querySelectorAll("div .clone_block"),
     btnClone = domEl.formNagruzka.querySelectorAll(".fa-plus");
   // console.log(btnClone);
+  btnClone.forEach((item, index) => {
+        let count = 1;
+        btnClone[index].addEventListener("click", onClickBtn);
+        function onClickBtn() {
+          const children = paramForm[index].querySelector(
+            ".clone_block .fusion-builder-row "
+          );
+          let clone = children.cloneNode(true);
+          parent[index].appendChild(clone);
+          count++;
+          parent[index].lastChild.querySelector("li .circle-yes").textContent =
+            count;
+          clone.querySelector(".plotnost span").textContent = "0 ";
+          domEl.selectMaterial = domEl.formNagruzka.querySelectorAll(
+            ".type_material select"
+          );
+          // console.log(count);
+          if (count > 3) {
+            delClickBtn(index);
+          }         
+        }
+         function delClickBtn(index) {          
+           btnClone[index].removeEventListener("click", onClickBtn);
+           btnClone[index].style.opacity = "0.5";
+         }
+  });
 
-  for (let i = 0; i < btnClone.length; i++) {
-    let count = 1;
-    btnClone[i].addEventListener("click", (e) => {
-      const children = paramForm[i].querySelector(
-        ".clone_block .fusion-builder-row "
-      );
-      let clone = children.cloneNode(true);
-      parent[i].appendChild(clone);
-      count++;
-      parent[i].lastChild.querySelector("li .circle-yes").textContent = count;
-      clone.querySelector(".plotnost span").textContent = "0 ";
-      domEl.selectMaterial = domEl.formNagruzka.querySelectorAll(
-        ".type_material select"
-      );
-    });
-  }
+
+
+   
+  
 }
 addBlock();
 
@@ -146,16 +160,17 @@ function getDatePlotnost(
 
   //  при клике клонирования блока дом-элементы selectMaterial, newparent перерисовываются, "а" становится счетчиком
   btn.forEach((item, index) => {
-    btn[index].addEventListener("click", () => {
+    btn[index].addEventListener("click", onClickBtn);
+    function onClickBtn() {
       let selectMaterialNew = form[index].querySelectorAll(
         ".type_material select"
       );
       let newparentNew = form[index].querySelectorAll(".newparent");
-      a++;
+      ++a;
       selectMaterial = selectMaterialNew;
       newparent = newparentNew;
-      actionSelect(selectMaterial, newparent);
-    });
+      actionSelect(selectMaterial, newparent);       
+    }
   });
 }
 
@@ -189,7 +204,7 @@ function calcValue(a) {
       const inputParam = blockInputs[i].querySelectorAll("input");
       getDAteInput(inputParam);
       let plotnostValue = +plotnost[i].textContent;
-     
+
       // расчет нагрузки и передача результата в текст
       let area = 0;
 
@@ -199,32 +214,32 @@ function calcValue(a) {
         for (let i = 0; i < typesKrovly.length; i++) {
           let expr = typesKrovly[i].value;
           if (typesKrovly[i].checked) {
-               let H  = +blockParam.querySelector("#length-a").value,
-                 H1 = +blockParam.querySelector("#length-b").value,
-                 H2 = +blockParam.querySelector("#length-c").value,
-                 H4 = +blockParam.querySelector("#length-d").value,
-                 H3 = +blockParam.querySelector("#length-f").value,
-                 W = +blockParam.querySelector("#width-a").value,
-                 W1 = +blockParam.querySelector("#width-b").value,
-                 W2 = +blockParam.querySelector("#width-c").value,
-                 W3 = +blockParam.querySelector("#width-d").value;
-              
+            let H = +blockParam.querySelector("#length-a").value,
+              H1 = +blockParam.querySelector("#length-b").value,
+              H2 = +blockParam.querySelector("#length-c").value,
+              H4 = +blockParam.querySelector("#length-d").value,
+              H3 = +blockParam.querySelector("#length-f").value,
+              W = +blockParam.querySelector("#width-a").value,
+              W1 = +blockParam.querySelector("#width-b").value,
+              W2 = +blockParam.querySelector("#width-c").value,
+              W3 = +blockParam.querySelector("#width-d").value;
+
             switch (expr) {
               case "pl":
               case "od":
-                area = H * W ;
+                area = H * W;
                 break;
               case "dv":
-                 area = W * (H1+H2);
+                area = W * (H1 + H2);
                 console.log("Двускатная");
                 break;
               case "vl":
                 console.log("Вальмовая, по две стороны каждой");
-                 area = (W1 + W3)* H1 + (H2 * W2);
+                area = (W1 + W3) * H1 + H2 * W2;
                 break;
               case "sh":
                 console.log("Шатровая, две стороны каждой");
-                area = (H1 * W1)   + (H2 * W2) ;
+                area = H1 * W1 + H2 * W2;
                 break;
               case "mn":
                 console.log("Мансардная");
@@ -239,20 +254,20 @@ function calcValue(a) {
         let lengthNagruz = +inputParam[0].value,
           widthhNagruz = +inputParam[1].value,
           heightNagruz = +inputParam[2].value;
-        area =  lengthNagruz * widthhNagruz * heightNagruz;
+        area = lengthNagruz * widthhNagruz * heightNagruz;
       }
       //  area = area;
       if (plotnostValue === 0) {
         alert("Выберите материал кровли");
         return;
-      } 
+      }
       // умножение плотности на площадь
       CalcNagruz = plotnostValue * area;
       let sum = 0;
       numbers.push(CalcNagruz);
-      numbers.map((item) => (sum += item));      
-     let itemTn = (sum / 1000).toFixed(2),
-       itemCoeff = (itemTn * coefficientValue).toFixed(2);
+      numbers.map((item) => (sum += item));
+      let itemTn = (sum / 1000).toFixed(2),
+        itemCoeff = (itemTn * coefficientValue).toFixed(2);
       resultTn.textContent = itemTn;
       resultCoef.textContent = itemCoeff;
     }
@@ -267,7 +282,7 @@ function calcValue(a) {
         inputParam[i].value === "" &&
         inputParam[i].type != "hidden"
       ) {
-        inputParam[i].value = inputParam[i].getAttribute("placeholder");      
+        inputParam[i].value = inputParam[i].getAttribute("placeholder");
       }
       // проверка на минимум
       if (+inputParam[i].min && +inputParam[i].value < +inputParam[i].min) {
@@ -277,7 +292,6 @@ function calcValue(a) {
         return;
       }
       inputParam[i].setAttribute("step", 0.01);
-      
     }
   }
 }
@@ -293,30 +307,25 @@ function btnNagruz() {
   }
 }
 
-
-const btnResult = document.querySelector("#result"); 
+const btnResult = document.querySelector("#result");
 btnResult.addEventListener("click", (e) => {
-      const pseudoArray = document.querySelectorAll(".result_1"),
-        pseudoArrayCoef = document.querySelectorAll(".result_2");
-      const resultsText = document.querySelector(".results_1"),
-        resultsTextCoeff = document.querySelector(".results_2");
-        // addResult(); 
-   
-      sendTotal(pseudoArray, resultsText);
-      sendTotal(pseudoArrayCoef, resultsTextCoeff);
-})
- 
+  const pseudoArray = document.querySelectorAll(".result_1"),
+    pseudoArrayCoef = document.querySelectorAll(".result_2");
+  const resultsText = document.querySelector(".results_1"),
+    resultsTextCoeff = document.querySelector(".results_2");
+  // addResult();
+
+  sendTotal(pseudoArray, resultsText);
+  sendTotal(pseudoArrayCoef, resultsTextCoeff);
+});
 
 function startNagruzki() {
   getDatePlotnosty();
   btnNagruz();
 }
 
-
 import WeidghtJsonFile from "./data/loadWeight.json" assert { type: "json" };
 
 import { convertArray, sumEl, sendTotal } from "./calcPush.js";
 
-export { startNagruzki};
-
-
+export { startNagruzki };
